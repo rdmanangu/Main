@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="icon" href="Logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Kanit", sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            background: linear-gradient(
+            270deg,
+            rgba(101, 0, 40, 1) 0%,
+            rgba(224, 112, 159, 1) 22.499999403953552%,
+            rgba(101, 0, 40, 1) 100%);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        hr{
+            border: 3px solid white;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+        hr:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        hr:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        hr:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            font-size: 25px;
+            color: #fff;
+            padding: 20px 0;
+            height: 125px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 250px;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative; 
+            padding: 10px;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out; 
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; 
+            width: 0;
+            height: 2px;
+            background-color: white; 
+            transition: width 0.3s ease-in-out; 
+        }
+
+        .navbar a:hover {
+            color: #FF81D0;
+        }
+
+        .navbar a:hover::after {
+            width: 100%; 
+        }
+
+        .btn-schedule {
+            background-color: #53a547;
+            padding: 10px 20px;
+            border-radius: 45px;
+            text-transform: uppercase;
+        }
+
+
+
+        .thankyou-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%; 
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.2s ease-in-out;
+            margin: 50px auto; 
+        }
+
+        h1 {
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtext {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 10px;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .contact-box {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            width: 33%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-box  {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-box  {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        .social-text {
+            margin-top: 30px;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        .bottom {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .bottom1 img{
+            width: 200px;
+            height: 200px;
+        }
+
+        .bottom h2 {
+            border-radius: 45px;
+            background: rgb(237,237,237,.1);
+            backdrop-filter: blur(10px);
+            font-size: 2.5rem;
+            color: white;
+        }
+        .btn {
+            background-color: #53a547;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: orange;
+        }
+
+        .btn-more {
+            margin-top: 30px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+
+        footer {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        @keyframes pixelatedGlow {
+            0%, 100% {
+                border-color: #6d07c0;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                border-color: #d616dd;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            .navbar {
+                font-size: 25px;
+            }
+
+            .thankyou-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-box {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo img {
+                width: 150px;
+            }
+
+            .thankyou-container {
+                margin-top: 400px;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn-schedule {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .contact-box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .contact-box p {
+                font-size: 1rem;
+            }
+
+            .bottom h2 {
+                font-size: 1.5rem;
+            }
+
+            .bottom1 img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="SmileEase Dental Logo" >
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="AboutUS.html">About</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="Location.html">Location</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="ScheduleYourVisit.html" class="btn-schedule">Schedule Your Visit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="thankyou-container">
+        <h1>THANK YOU!</h1>
+        <p class="subtext">We would Be Happy To Assist You</p>
+        <p class="message">
+            Thank you for choosing SmileEase Dental Solutions for your dental care needs! 
+            We are grateful for the opportunity to serve you and help you achieve a healthy, 
+            beautiful smile. Your trust means everything to us, and we are committed to providing 
+            you with the best possible care in a comfortable and friendly environment.
+        </p>
+        <p class="message">
+            If you have any further questions, need to schedule your next appointment, 
+            or want to explore more about our services, please don’t hesitate to get in touch. 
+            We’re here to ensure that every visit is a positive experience.
+        </p>
+        <p class="message">We look forward to seeing you again soon!</p>
+        <p class="signature">Stay Smiling,<br>The SmileEase Dental Solutions Team</p>
+
+        <hr>
+
+        <h2>CONTACT US</h2>
+
+        <div class="contact-info">
+            <div class="contact-box">
+                <i class="fa fa-phone"></i>
+                <p>Give Us A Call</p>
+                <p>0998 939 8356</p>
+            </div>
+            <div class="contact-box">
+                <p>We're On The Map</p>
+                <p>Angeles City</p>
+            </div>
+            <div class="contact-box">
+                <p>Write Us</p>
+                <p>managerdental@gmail.com</p>
+            </div>
+        </div>
+
+        <p class="social-text">
+            Feel free to follow us on social media for the latest updates and promotions!
+        </p>
+    </div>
+    <hr>
+    <section class="bottom">
+        <h2>"SmileEase Dental Solutions – Where Every Smile Finds Comfort and Care."</h2>
+        <div class="bottom1">
+            <img src="logo.png" alt="SmileEase Dental Logo" class="bottom1">
+        </div>
+        <a href="Home.html" class="btn">Back to Home Page</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SmileEase Dental Solutions. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

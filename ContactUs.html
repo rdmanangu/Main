@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="icon" href="Logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Kanit", sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            background: linear-gradient(
+            270deg,
+            rgba(101, 0, 40, 1) 0%,
+            rgba(224, 112, 159, 1) 22.499999403953552%,
+            rgba(101, 0, 40, 1) 100%);
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            
+        }
+        hr{
+            border: 3px solid white;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+        hr:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        hr:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        hr:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            font-size: 25px;
+            color: #fff;
+            padding: 20px 0;
+            height: 125px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 250px;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative; 
+            padding: 10px;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out; 
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; 
+            width: 0;
+            height: 2px;
+            background-color: white; 
+            transition: width 0.3s ease-in-out; 
+        }
+
+        .navbar a:hover {
+            color: #FF81D0;
+        }
+
+        .navbar a:hover::after {
+            width: 100%; 
+        }
+
+        .btn-schedule {
+            background-color: #53a547;
+            padding: 10px 20px;
+            border-radius: 45px;
+            text-transform: uppercase;
+        }
+
+        .contact-section {
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            width: 40%;
+            margin: 0 auto 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.5s ease-in-out;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            color: #000;
+        }
+
+        .contact-form textarea {
+            height: 50%;
+        }
+
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+
+        #contact-display {
+            margin-top: 30px;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            display: none; 
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        #contact-display h3 {
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .contact-item p {
+            margin: 0;
+            padding: 5px;
+        }
+
+        .contact-item span {
+            font-weight: bold;
+        }
+
+        .contact-item button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-item .edit-btn {
+            background-color: #ffc107;
+            color: black;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-item .edit-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .contact-item .delete-btn {
+            background-color: #dc3545;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-item .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            animation: slideUp 0.8s ease;
+        }
+
+        .contact-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            width: 30%;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-box:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-box p {
+            font-size: 1.1rem;
+        }
+
+        .bottom {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .bottom1 img{
+            width: 200px;
+            height: 200px;
+        }
+
+        .bottom h2 {
+            border-radius: 45px;
+            background: rgb(237,237,237,.1);
+            backdrop-filter: blur(10px);
+            font-size: 2.5rem;
+            color: white;
+        }
+        .btn {
+            background-color: #53a547;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: orange;
+        }
+
+        .btn-more {
+            margin-top: 30px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+
+        footer {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pixelatedGlow {
+            0%, 100% {
+                border-color: #6d07c0;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                border-color: #d616dd;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+        
+        @media screen and (min-width: 1025px) {
+            .navbar {
+                font-size: 25px;
+                height: 125px;
+                padding: 0 40px;
+            }
+
+            .navbar ul {
+                gap: 40px;
+            }
+
+            .contact-form {
+                width: 40%;
+            }
+
+            .contact-info {
+                flex-direction: row;
+            }
+
+            .contact-box {
+                width: 30%;
+            }
+
+            .bottom h2 {
+                font-size: 2.5rem;
+            }
+
+            .bottom1 img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .navbar {
+                font-size: 22px;
+                height: 100px;
+            }
+
+            .navbar ul {
+                gap: 20px;
+            }
+
+            .contact-form {
+                width: 60%;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .contact-box {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .bottom h2 {
+                font-size: 2rem;
+            }
+
+            .bottom1 img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .navbar {
+                font-size: 22px;
+                padding: 0 15px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                font-size: 14px;
+                margin-top: 150px;
+                gap: 20px;
+            }
+
+            .contact-form {
+                width: 90%;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .contact-box {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .bottom h2 {
+                font-size: 1.8rem;
+            }
+
+            .bottom1 img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="SmileEase Dental Logo" >
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="AboutUS.html">About</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="Location.html">Location</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="ScheduleYourVisit.html" class="btn-schedule">Schedule Your Visit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="contact-section">
+        <h2>Contact Us</h2>
+        <p>We would be happy to assist you!</p>
+
+        <form class="contact-form" id="contactForm">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="text" id="phone" placeholder="Phone" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Write Us" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+
+        <div id="contact-display">
+            <h3>Submitted Contacts</h3>
+            <div id="contacts-list"></div>
+            <a href="ThankYou.html" class="btn">Send</a>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-box">
+                <h3>Give Us A Call</h3>
+                <p>0989 939 8356</p>
+            </div>
+            <div class="contact-box">
+                <h3>We're On The Map</h3>
+                <p>Angeles City</p>
+            </div>
+            <div class="contact-box">
+                <h3>Write Us</h3>
+                <p>manangurelnelle@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let contacts = [];
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            let fullName = document.getElementById('fullName').value;
+            let phone = document.getElementById('phone').value;
+            let email = document.getElementById('email').value;
+            let message = document.getElementById('message').value;
+
+            // Create contact object and add it to the list
+            let contact = { fullName, phone, email, message };
+            contacts.push(contact);
+
+            // Update contact list display
+            displayContacts();
+
+            // Clear form fields
+            document.getElementById('fullName').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        });
+
+        // Function to display contacts
+        function displayContacts() {
+            const contactsList = document.getElementById('contacts-list');
+            contactsList.innerHTML = '';
+
+            contacts.forEach((contact, index) => {
+                const contactItem = document.createElement('div');
+                contactItem.classList.add('contact-item');
+                contactItem.innerHTML = `
+                    <div>
+                        <p><span>Full Name:</span> ${contact.fullName}</p>
+                        <p><span>Phone:</span> ${contact.phone}</p>
+                        <p><span>Email:</span> ${contact.email}</p>
+                        <p><span>Message:</span> ${contact.message}</p>
+                    </div>
+                    <div>
+                        <button class="edit-btn" onclick="editContact(${index})">Edit</button>
+                        <button class="delete-btn" onclick="deleteContact(${index})">Delete</button>
+                    </div>
+                `;
+
+                contactsList.appendChild(contactItem);
+            });
+
+            document.getElementById('contact-display').style.display = 'block';
+        }
+
+        // Function to delete a contact
+        function deleteContact(index) {
+            contacts.splice(index, 1);
+            displayContacts();
+        }
+
+         // Function to edit a contact
+         function editContact(index) {
+            const contact = contacts[index];
+
+            document.getElementById('fullName').value = contact.fullName;
+            document.getElementById('phone').value = contact.phone;
+            document.getElementById('email').value = contact.email;
+            document.getElementById('message').value = contact.message;
+
+            // Remove contact from list
+            contacts.splice(index, 1);
+            displayContacts();
+        }
+    </script>
+    <hr>
+    <section class="bottom">
+        <h2>"SmileEase Dental Solutions – Where Every Smile Finds Comfort and Care."</h2>
+        <div class="bottom1">
+            <img src="logo.png" alt="SmileEase Dental Logo" class="bottom1">
+        </div>
+        <a href="ScheduleYourVisit.html" class="btn">SCHEDULE YOUR VISIT NOW</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SmileEase Dental Solutions. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

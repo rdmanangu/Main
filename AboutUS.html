@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" href="Logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Kanit", sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            background: linear-gradient(
+            270deg,
+            rgba(101, 0, 40, 1) 0%,
+            rgba(224, 112, 159, 1) 22.499999403953552%,
+            rgba(101, 0, 40, 1) 100%);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            color: white;
+        }
+        hr{
+            border: 3px solid white;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+        hr:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        hr:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        hr:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            font-size: 25px;
+            color: #fff;
+            padding: 20px 0;
+            height: 125px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 250px;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative; 
+            padding: 10px;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out; 
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; 
+            width: 0;
+            height: 2px;
+            background-color: white; 
+            transition: width 0.3s ease-in-out; 
+        }
+
+        .navbar a:hover {
+            color: #FF81D0;
+        }
+
+        .navbar a:hover::after {
+            width: 100%; 
+        }
+
+        .btn-schedule {
+            background-color: #53a547;
+            padding: 10px 20px;
+            border-radius: 45px;
+            text-transform: uppercase;
+        }
+
+        .about-us-section {
+            text-align: center;
+            margin: 50px;
+            padding: 50px;
+            color: white;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 50px;
+        }
+
+        .content-block {
+            margin-bottom: 50px;
+        }
+
+        .content-title {
+            background: rgb(237,237,237,.1);
+            backdrop-filter: blur(10px);
+            border-radius: 45px;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+        }
+
+        .images-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .images-row:hover {
+            transform: scale(1.05);
+        }
+
+        .images-row img {
+            margin-bottom: 20px;
+            border-radius: 45px;
+            border: 5px solid;
+            width: 400px;
+            height: 250px;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+
+
+        .images-row img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .images-row img:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .images-row img:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+
+        .bottom {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .bottom1 img{
+            width: 200px;
+            height: 200px;
+        }
+
+        .bottom h2 {
+            border-radius: 45px;
+            background: rgb(237,237,237,.1);
+            backdrop-filter: blur(10px);
+            font-size: 2.5rem;
+            color: white;
+        }
+        .btn {
+            background-color: #53a547;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: orange;
+        }
+
+        .btn-more {
+            margin-top: 30px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        footer {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pixelatedGlow {
+            0%, 100% {
+                border-color: #6d07c0;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                border-color: #d616dd;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+
+        @media screen and (min-width: 1025px) {
+            body {
+                font-size: 18px;
+            }
+            .navbar ul {
+                gap: 20px;
+            }
+            .about-us-section {
+                padding: 60px;
+                margin: 70px auto;
+            }
+            .images-row img {
+                width: 400px;
+                height: 250px;
+            }
+            
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            body {
+                font-size: 16px; 
+            }
+            .navbar {
+                font-size: 22px;
+                padding: 0 15px;
+            }
+
+            .navbar ul {
+                gap: 20px;
+            }
+            .about-us-section {
+                padding: 40px;
+                margin: 50px auto;
+            }
+            .images-row {
+                flex-wrap: wrap; 
+            }
+            .images-row img {
+                width: 300px;
+                height: 200px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            body {
+                font-size: 14px; 
+            }
+            .navbar ul {
+                margin-top: 190px;
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+            .navbar a {
+                font-size: 1rem;
+            }
+            .about-us-section {
+                padding: 20px;
+                margin: 30px auto;
+            }
+            .images-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .images-row img {
+                width: 100%;
+                height: auto;
+            }
+            .btn {
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="SmileEase Dental Logo" >
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="Location.html">Location</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="ScheduleYourVisit.html" class="btn-schedule">Schedule Your Visit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="about-us-section">
+        <h1 class="section-title">ABOUT US</h1>
+        <p class="section-subtitle">behind the scenes & beyond</p>
+
+        <div class="content-block">
+            <h2 class="content-title">YOUR SMILE, OUR COMMITMENT. EXCEPTIONAL CARE AT SMILEEASE DENTAL SOLUTIONS!</h2>
+            <p class="content-text">
+                At SmileEase Dental Solutions, we believe that every smile tells a story, and we're here to make yours a bright, healthy, and confident one. With a deep passion for oral health and patient care, our clinic is dedicated to providing high-quality dental services in a comfortable, relaxing environment. From routine check-ups to advanced cosmetic treatments, we ensure that each visit is as easy and stress-free as possible.
+            </p>
+            <div class="images-row">
+                <img src="https://images.ctfassets.net/blycwv4v5ku0/3H7wDgoVB8TGav7KKuRhzt/8b4355f96de92e4dd810c39ab4bc73ed/626eb0eb-d0cb-456a-8435-904673c2df08.jpg" alt="Dental Service 1">
+                <img src="https://www.shutterstock.com/image-photo/happy-family-smiling-young-dentist-600nw-1091950463.jpg" alt="Dental Service 2">
+                <img src="https://cdn.motherhood.com.my/wp-content/uploads/2022/10/30155424/dental-clinic-Puchong-cover-1.jpg" alt="Dental Service 3">
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2 class="content-title">EXPERT CARE, ADVANCED SOLUTIONS: YOUR COMFORT AND SMILE ARE OUR PRIORITY</h2>
+            <p class="content-text">
+                Our team of experienced and compassionate dental professionals is committed to using the latest technology and techniques to deliver personalized care. Whether you're visiting us for a simple cleaning, restorative work, or a smile makeover, you can trust that we’ll prioritize your comfort, safety, and satisfaction.
+            </p>
+            <div class="images-row">
+                <img src="https://celebritysmiles.co.in/wp-content/uploads/2021/03/good-dental-clinic.jpg" alt="Dental Service 4">
+                <img src="https://mediboost.b-cdn.net/wp-content/webp-express/webp-images/uploads/2023/05/website-for-dentists-sydney-mediboost-australia-1080x675.jpg.webp" alt="Dental Service 5">
+                <img src="https://www.andrewwheatleydds.com/wp-content/uploads/2021/04/Your-paragraph-text-2.png" alt="Dental Service 6">
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2 class="content-title">CARING FOR EVERY SMILE: ACCESSIBLE AND AFFORDABLE DENTAL CARE FOR ALL AGES</h2>
+            <p class="content-text">
+                We are proud to be a clinic that caters to all ages and dental needs. Our mission is to make exceptional dental care accessible and affordable to everyone in the community. At SmileEase Dental Solutions, we don't just care for your teeth – we care about you, and we aim to help you achieve a smile you're proud to show.
+            </p>
+            <div class="images-row">
+                <img src="https://wildwooddentalclinic.com/wp-content/uploads/2018/08/family-dentistry.jpg" alt="Dental Service 7">
+                <img src="https://winnfamilydentistry.com/wp-content/uploads/2020/09/178570688_xl-2015-780x520.jpg" alt="Dental Service 8">
+                <img src="https://www.bostondentalgroup.com/wp-content/uploads/dental-check-implants-1024x683.jpg" alt="Dental Service 9">
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="bottom">
+        <h2>“Your Smile, Our Priority”</h2>
+        <div class="bottom1">
+            <img src="logo.png" alt="SmileEase Dental Logo" class="bottom1">
+        </div>
+        <a href="ScheduleYourVisit.html" class="btn">SCHEDULE YOUR VISIT NOW</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SmileEase Dental Solutions. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

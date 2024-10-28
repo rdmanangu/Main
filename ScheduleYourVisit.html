@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Your Visit</title>
+    <link rel="icon" href="Logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Kanit", sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            background: linear-gradient(
+            270deg,
+            rgba(101, 0, 40, 1) 0%,
+            rgba(224, 112, 159, 1) 22.499999403953552%,
+            rgba(101, 0, 40, 1) 100%);
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+        hr{
+            border: 3px solid white;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+        hr:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        hr:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        hr:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            font-size: 25px;
+            color: #fff;
+            padding: 20px 0;
+            height: 125px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 250px;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative; 
+            padding: 10px;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out; 
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; 
+            width: 0;
+            height: 2px;
+            background-color: white; 
+            transition: width 0.3s ease-in-out; 
+        }
+
+        .navbar a:hover {
+            color: #FF81D0;
+        }
+
+        .navbar a:hover::after {
+            width: 100%; 
+        }
+
+        .btn-schedule {
+            background-color: #53a547;
+            padding: 10px 20px;
+            border-radius: 45px;
+            text-transform: uppercase;
+        }
+
+        .appointment-form-container {
+            margin: 50px auto; 
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            width: 40%;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .appointment-form-container h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form-container p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        form input, .upload-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .upload-box {
+            text-align: left;
+        }
+
+        .upload-box input {
+            width: 100%;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buttons button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .buttons button:hover {
+            background-color: #45a049;
+        }
+
+        #appointmentList {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Pixelated glow effect on hover */
+        @keyframes pixelatedGlow {
+            0%, 100% {
+                box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+
+        .bottom {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .bottom1 img{
+            width: 200px;
+            height: 200px;
+        }
+
+        .bottom h2 {
+            border-radius: 45px;
+            background: rgb(237,237,237,.1);
+            backdrop-filter: blur(10px);
+            font-size: 2.5rem;
+            color: white;
+        }
+        .btn {
+            background-color: #53a547;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: orange;
+        }
+
+        .btn-more {
+            margin-top: 30px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+
+        footer {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        @keyframes pixelatedGlow {
+            0%, 100% {
+                border-color: #6d07c0;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                border-color: #d616dd;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .appointment-form-container {
+                width: 40%;
+            }
+
+            .navbar {
+                font-size: 25px;
+                padding: 0 20px;
+            }
+
+            .navbar ul {
+                gap: 30px;
+            }
+
+            .buttons button {
+                width: 48%;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .appointment-form-container {
+                width: 70%;
+            }
+
+            .navbar {
+                font-size: 22px;
+                padding: 0 15px;
+            }
+
+            .navbar ul {
+                gap: 20px;
+            }
+
+            .buttons button {
+                width: 48%;
+            }
+        }
+ 
+        @media (max-width: 767px) {
+            body {
+                font-size: 14px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .appointment-form-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .appointment-form-container h1 {
+                font-size: 1.8rem;
+            }
+
+            .buttons button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="SmileEase Dental Logo" >
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="AboutUS.html">About</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="Location.html">Location</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="#" class="btn-schedule">Schedule Your Visit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="appointment-form-container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>APPOINTMENT REQUEST FORM</h1>
+        <p>Please be informed that this is not yet a confirmed booking. Our Patient Support Team will contact you to confirm your appointment. Thank you.</p>
+
+        <form id="appointmentForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="contactNumber" placeholder="Contact Number" required>
+            <input type="text" id="procedure" placeholder="Procedure" required>
+            <input type="date" id="preferredDate" required>
+            <input type="text" id="preferredBranch" placeholder="Preferred Branch" required>
+            <input type="text" id="insurance" placeholder="With Dental Insurance / HMO" required>
+            
+            <div class="upload-box">
+                <label for="uploadFiles">Upload Photos / Xray / Dental Records</label>
+                <input type="file" id="uploadFiles" multiple>
+            </div>
+            
+            <div class="buttons">
+                <button type="button" onclick="saveDraft()">Save as Draft</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        
+        <h2>Appointment Requests</h2>
+        <div id="appointmentList"></div>
+    </div>
+    <hr>
+    <section class="bottom">
+        <h2>"SmileEase Dental Solutions – Where Every Smile Finds Comfort and Care."</h2>
+        <div class="bottom1">
+            <img src="logo.png" alt="SmileEase Dental Logo" class="bottom1">
+        </div>
+        <a href="AC.html" class="btn">Continue to Process your Appointment Requests</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SmileEase Dental Solutions. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let appointments = [];
+    
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        let appointment = {
+            name: document.getElementById('name').value,
+            age: document.getElementById('age').value,
+            email: document.getElementById('email').value,
+            contactNumber: document.getElementById('contactNumber').value,
+            procedure: document.getElementById('procedure').value,
+            preferredDate: document.getElementById('preferredDate').value,
+            preferredBranch: document.getElementById('preferredBranch').value,
+            insurance: document.getElementById('insurance').value,
+            files: document.getElementById('uploadFiles').files
+        };
+    
+        appointments.push(appointment);
+        displayAppointments();
+        this.reset(); 
+        });
+    
+        function displayAppointments() {
+        const list = document.getElementById('appointmentList');
+        list.innerHTML = '';
+    
+        appointments.forEach((appointment, index) => {
+            let appointmentDiv = document.createElement('div');
+            appointmentDiv.classList.add('appointment-item');
+            appointmentDiv.innerHTML = `
+                <h3>${appointment.name}</h3>
+                <p>Age: ${appointment.age}</p>
+                <p>Email: ${appointment.email}</p>
+                <p>Contact: ${appointment.contactNumber}</p>
+                <p>Procedure: ${appointment.procedure}</p>
+                <p>Preferred Date: ${appointment.preferredDate}</p>
+                <p>Preferred Branch: ${appointment.preferredBranch}</p>
+                <p>Insurance: ${appointment.insurance}</p>
+                <button onclick="editAppointment(${index})">Edit</button>
+                <button onclick="deleteAppointment(${index})">Delete</button>
+            `;
+            list.appendChild(appointmentDiv);
+        });
+        }
+    
+        function editAppointment(index) {
+        const appointment = appointments[index];
+    
+        document.getElementById('name').value = appointment.name;
+        document.getElementById('age').value = appointment.age;
+        document.getElementById('email').value = appointment.email;
+        document.getElementById('contactNumber').value = appointment.contactNumber;
+        document.getElementById('procedure').value = appointment.procedure;
+        document.getElementById('preferredDate').value = appointment.preferredDate;
+        document.getElementById('preferredBranch').value = appointment.preferredBranch;
+        document.getElementById('insurance').value = appointment.insurance;
+    
+    
+        appointments.splice(index, 1);
+        displayAppointments();
+        }
+    
+        function deleteAppointment(index) {
+        appointments.splice(index, 1);
+        displayAppointments();
+        }
+    
+        function saveDraft() {
+        alert("Draft saved successfully!");
+        }
+    </script>
+
+</body>
+</html>
+

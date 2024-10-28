@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmileEase Dental Solutions</title>
+    <link rel="icon" href="Logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Kanit", sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            background: linear-gradient(
+            270deg,
+            rgba(101, 0, 40, 1) 0%,
+            rgba(224, 112, 159, 1) 22.499999403953552%,
+            rgba(101, 0, 40, 1) 100%);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            
+        }
+        hr{
+            border: 3px solid white;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+        hr:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        hr:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        hr:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            font-size: 25px;
+            color: #fff;
+            padding: 20px 0;
+            height: 125px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 250px;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative; 
+            padding: 10px;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out; 
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; 
+            width: 0;
+            height: 2px;
+            background-color: white; 
+            transition: width 0.3s ease-in-out; 
+        }
+
+        .navbar a:hover {
+            color: #FF81D0;
+        }
+
+        .navbar a:hover::after {
+            width: 100%; 
+        }
+
+        .btn-schedule {
+            background-color: #53a547;
+            padding: 10px 20px;
+            border-radius: 45px;
+            text-transform: uppercase;
+        }
+
+        .hero-content {
+            color: white;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero-text h1 {
+            margin-left: 45px;
+            font-size: 70px;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+        }
+
+        .hero-image img {
+            filter: drop-shadow(5px 5px 10px black);
+            
+        }
+
+        .hero .btn {
+            margin-top: 20px;
+            margin-left: 45px;
+        }
+
+        .promo {
+            color: white;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .promo-content {
+            max-width: 50%;
+        }
+
+        .promo h2 {
+            
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .promo h2 span {
+            color: rgb(85, 4, 85);
+        }
+
+        .promo p {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .promo .btn {
+            margin-top: 20px;
+        }
+
+        .promo-image img {
+            filter: drop-shadow(5px 5px 10px black);
+        }
+
+
+        .services {
+            padding: 125px 50px;
+            text-align: center;
+        }
+
+        .services h2 {
+            border-radius: 45px;
+            background: rgb(237,237,237,.1);
+            backdrop-filter: blur(10px);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .services-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service-item {
+            width: 30%;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 45px;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-item img {
+            margin-bottom: 20px;
+            border-radius: 45px;
+            border: 5px solid;
+            width: 400px;
+            height: 250px;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+
+
+        .service-item img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .service-item img:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .service-item img:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+
+        .service-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+            letter-spacing: 1px;
+        }
+        
+        .service-item p {
+            font-size: 1rem;
+            color: #fff;
+            line-height: 1.7;
+        }
+
+        .bottom {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .bottom1 img{
+            width: 200px;
+            height: 200px;
+        }
+
+        .bottom h2 {
+            border-radius: 45px;
+            background: rgb(237,237,237,.1);
+            backdrop-filter: blur(10px);
+            font-size: 2.5rem;
+            color: white;
+        }
+        .btn {
+            background-color: #53a547;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: orange;
+        }
+
+        .btn-more {
+            margin-top: 30px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        footer {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pixelatedGlow {
+            0%, 100% {
+                border-color: #6d07c0;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                border-color: #d616dd;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+
+        /* Desktop */
+@media screen and (min-width: 1024px) {
+    /* Adjustments for larger desktop screens */
+    .hero-text h1 {
+        font-size: 70px;
+    }
+
+    .promo h2 {
+        font-size: 50px;
+    }
+
+    .promo p {
+        font-size: 35px;
+    }
+
+    .services-grid {
+        flex-direction: row;
+    }
+
+    .service-item {
+        width: 30%;
+    }
+}
+
+/* Tablet (Landscape & Portrait) */
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 50px;
+    }
+
+    .promo-content {
+        max-width: 100%;
+    }
+
+    .promo h2 {
+        font-size: 35px;
+    }
+
+    .promo p {
+        font-size: 25px;
+    }
+
+    .services-grid {
+        flex-direction: column;
+    }
+
+    .service-item {
+        width: 100%;
+    }
+
+    .hero-image img {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* Phones (Portrait) */
+@media screen and (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .hero-text h1 {
+        font-size: 35px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image img {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .promo h2 {
+        font-size: 30px;
+    }
+
+    .promo p {
+        font-size: 20px;
+    }
+
+    .services-grid {
+        flex-direction: column;
+    }
+
+    .service-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .service-item img {
+        width: 100%;
+        height: auto;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .bottom h2 {
+        font-size: 1.8rem;
+    }
+
+    .bottom1 img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="SmileEase Dental Logo" >
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="AboutUS.html">About</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="Location.html">Location</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="ScheduleYourVisit.html" class="btn-schedule">Schedule Your Visit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Specialized Dental Care For All Your Needs</h1>
+                <a href="AboutUS.html" class="btn">About Us</a>
+            </div>
+            <div class="hero-image">
+                <img src="man.png" alt="Dentist">
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="promo">
+        <div class="promo-image">
+            <img src="woman.png" alt="Dentist">
+        </div>
+        <div class="promo-content">
+            <h2>Experience <span>World Class</span> Dental Care</h2>
+            <p>Our services are specialized in different fields to address all your dental needs, ensuring that you receive the best possible treatment with care and safety.</p>
+            <a href="Services.html" class="btn">Learn More</a>
+        </div>
+    </section>
+    <hr>
+    <section class="services">
+        <h2>What Can We Do For You?</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="https://img.freepik.com/premium-photo/dentists-examining-young-patient-dental-clinic_107420-92629.jpg" alt="General Dentistry">
+                <h3>General Dentistry</h3>
+                <p>Comprehensive care for oral hygiene, preventive measures, and routine check-ups.</p>
+                <a href="Services.html" class="btn">Learn More</a>
+            </div>
+            <div class="service-item">
+                <img src="https://www.lovettdentistrybaytown.com/wp-content/uploads/2021/07/Orthodontics.jpeg" alt="Orthodontics">
+                <h3>Orthodontics</h3>
+                <p>Specialized orthodontic care for improved confidence and alignment.</p>
+                <a href="Services.html" class="btn">Learn More</a>
+            </div>
+            <div class="service-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpv4xKWjpRq4erP_vZX5mVngqnt3K0gw6P5g&s" alt="Endodontics">
+                <h3>Endodontics</h3>
+                <p>Root canal treatments and specialized care for dental pulp issues.</p>
+                <a href="Services.html" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="bottom">
+        <h2>"SmileEase Dental Solutions – Where Every Smile Finds Comfort and Care."</h2>
+        <div class="bottom1">
+            <img src="logo.png" alt="SmileEase Dental Logo" class="bottom1">
+        </div>
+        <a href="ScheduleYourVisit.html" class="btn">SCHEDULE YOUR VISIT NOW</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SmileEase Dental Solutions. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

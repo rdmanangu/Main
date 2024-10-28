@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+    <link rel="icon" href="Logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pixelify+Sans&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Kanit", sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            background: linear-gradient(
+            270deg,
+            rgba(101, 0, 40, 1) 0%,
+            rgba(224, 112, 159, 1) 22.499999403953552%,
+            rgba(101, 0, 40, 1) 100%);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        hr{
+            border: 3px solid white;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+        hr:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        hr:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        hr:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            font-size: 25px;
+            color: #fff;
+            padding: 20px 0;
+            height: 125px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 250px;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative; 
+            padding: 10px;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out; 
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; 
+            width: 0;
+            height: 2px;
+            background-color: white; 
+            transition: width 0.3s ease-in-out; 
+        }
+
+        .navbar a:hover {
+            color: #FF81D0;
+        }
+
+        .navbar a:hover::after {
+            width: 100%; 
+        }
+
+        .btn-schedule {
+            background-color: #53a547;
+            padding: 10px 20px;
+            border-radius: 45px;
+            text-transform: uppercase;
+        }
+        .locations-section {
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .locations-section h2 {
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .locations-section .sub-heading {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .team h3 {
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            
+        }
+
+        .clinic-location h3 {
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+            font-size: 1.6rem;
+            margin-top: 20px;
+            
+        }
+
+        .clinic-location .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .clinic-image-container {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .clinic-image {
+            width: 50%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-radius: 45px;
+            border: 5px solid;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            animation: pixelatedGlow 1.5s steps(4) infinite;
+        }
+
+        .clinic-image-container:hover .clinic-image {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .clinic-image-container img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .clinic-image-container img:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .clinic-image-container img:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+        .branch-name {
+            text-shadow: 4px 4px 4px rgb(92, 3, 92);
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .branch-address {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .info-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            position: relative;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .info-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .info-item h4:hover {
+            color: #fbc2eb;
+        }
+
+        .info-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #f0f0f0;
+        }
+
+        .doctor-image {
+            width: 30%;
+            height: auto;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .doctor-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .doctor-name {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .bottom {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .bottom1 img{
+            width: 200px;
+            height: 200px;
+        }
+
+        .bottom h2 {
+            border-radius: 45px;
+            background: rgb(237,237,237,.1);
+            backdrop-filter: blur(10px);
+            font-size: 2.5rem;
+            color: white;
+        }
+        .btn {
+            background-color: #53a547;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: orange;
+        }
+
+        .btn-more {
+            margin-top: 30px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+
+        footer {
+            background: rgb(64,0,38);
+            background: linear-gradient(90deg, rgba(64,0,38,1) 0%, rgba(176,119,221,1) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        @keyframes pixelatedGlow {
+            0%, 100% {
+                border-color: #6d07c0;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                border-color: #d616dd;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .navbar {
+                height: auto;
+                font-size: 20px;
+                padding: 15px;
+                text-align: center;
+            }
+
+            .navbar a {
+                font-size: 18px;
+                padding: 8px;
+            }
+
+            .locations-section h2 {
+                font-size: 2rem;
+            }
+
+            .locations-section .sub-heading {
+                font-size: 1rem;
+            }
+
+            .clinic-location h3,
+            .team h3,
+            .info-item h4 {
+                font-size: 1.4rem;
+            }
+
+            .clinic-image {
+                width: 80%;
+            }
+
+            .info-item {
+                padding: 15px;
+            }
+
+            .info-item p {
+                font-size: 0.9rem;
+            }
+
+            .doctor-image {
+                width: 60%;
+            }
+        }
+
+        /* Tablets (landscape) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .navbar ul {
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .navbar {
+                padding: 15px 0;
+            }
+
+            .locations-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .locations-section .sub-heading {
+                font-size: 1.1rem;
+            }
+
+            .clinic-location h3,
+            .team h3,
+            .info-item h4 {
+                font-size: 1.6rem;
+            }
+
+            .clinic-image {
+                width: 70%;
+            }
+
+            .info-item {
+                padding: 20px;
+            }
+
+            .info-item p {
+                font-size: 1rem;
+            }
+
+            .doctor-image {
+                width: 40%;
+            }
+        }
+
+        /* Desktops (larger screens) */
+        @media (min-width: 1024px) {
+            .navbar ul {
+                gap: 30px;
+            }
+
+            .navbar {
+                padding: 20px 0;
+            }
+
+            .locations-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .locations-section .sub-heading {
+                font-size: 1.2rem;
+            }
+
+            .clinic-location h3,
+            .team h3,
+            .info-item h4 {
+                font-size: 1.8rem;
+            }
+
+            .clinic-image {
+                width: 50%;
+            }
+
+            .info-item {
+                padding: 25px;
+            }
+
+            .info-item p {
+                font-size: 1.1rem;
+            }
+
+            .doctor-image {
+                width: 30%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="SmileEase Dental Logo" >
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="AboutUS.html">About</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="ScheduleYourVisit.html" class="btn-schedule">Schedule Your Visit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="locations-section">
+        <h2>OUR LOCATIONS</h2>
+        <p class="sub-heading">Behind the scenes & beyond</p>
+
+        <div class="team">
+            <h3>Meet our amazing team</h3>
+            <p class="quote">We Couldn't Do It Without Them</p>
+            <img src="dentist.jpg" alt="Dr. Celina Lorraine Manangu" class="doctor-image">
+            <p class="branch-name">DR. Celina Lorraine Manangu</p>
+            <p class="branch-address">Dentist</p>
+        </div>
+
+        <div class="clinic-location">
+            <h3>Dental Clinic Location in Angeles City</h3>
+            <div class="clinic-image-container">
+                <img src="https://bigsee.eu/wp-content/uploads/2023/03/THuha-2022-05-31-DSC_4667-ParexpertOne-Dental-centar-Mostarac-Full-HD-copy.jpg" alt="Clinic Location" class="clinic-image">
+                <p class="branch-name">ANGELES CITY BRANCH</p>
+                <p class="branch-address">Sto. Rosario, Angeles, Pampanga</p>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <h4>Clinic Facilities</h4>
+                <p>
+                    At SmileEase Dental Solutions, we offer state-of-the-art treatment rooms, advanced dental technology, 
+                    and a comfortable waiting area to ensure a relaxing and efficient visit. Our clinic features digital 
+                    imaging for precise diagnostics, patient-friendly chairs, and a kid-friendly zone for young patients.
+                    Experience quality care in a modern, welcoming environment!
+                </p>
+            </div>
+
+            <div class="info-item">
+                <h4>Expert Dentists</h4>
+                <p>
+                    At SmileEase Dental Solutions, our team of expert dentists is committed to providing top-tier dental care. 
+                    With years of experience and specialized training, we utilize the latest techniques and technology to ensure 
+                    the best outcome for every patient. Whether it’s routine care or complex procedures, you're in expert hands!
+                </p>
+            </div>
+
+            <div class="info-item">
+                <h4>Our Medical Professionals</h4>
+                <p>
+                    Our dentists are specialized in different fields to address all your dental concerns and to make sure 
+                    that you are provided with unmatched care and safety.
+                </p>
+                <img src="dentist.jpg" alt="Dr. Celina Lorraine Manangu" class="doctor-image">
+                <p class="doctor-name">DR. Celina Lorraine Manangu</p>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="bottom">
+        <h2>"SmileEase Dental Solutions – Where Every Smile Finds Comfort and Care."</h2>
+        <div class="bottom1">
+            <img src="logo.png" alt="SmileEase Dental Logo" class="bottom1">
+        </div>
+        <a href="ScheduleYourVisit.html" class="btn">SCHEDULE YOUR VISIT NOW</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SmileEase Dental Solutions. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
